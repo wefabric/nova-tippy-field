@@ -20,6 +20,7 @@ class Tippy extends Field
 
     public $placement = 'top';
 
+    public $iconSize = '20px';
 
     public function __construct($name, $attribute = null, callable $resolveCallback = null)
     {
@@ -56,6 +57,7 @@ class Tippy extends Field
             'id' => $resource->id . "-" . $attribute,
             'shouldShow' => $this->shouldShow,
             'iconPosition' => $this->iconPosition,
+            'iconSize' => $this->iconSize,
             'placement' => $this->placement,
         ]);
     }
@@ -82,15 +84,20 @@ class Tippy extends Field
         return $this->withMeta(['iconPath' => file_get_contents($iconPath)]);
     }
 
-    /**
-    * Allows the tootip to be added on a text.
-    *
-    * @param string  $text
-    * @return $this
-    */
-    public function iconUrl($iconUrl)
+    public function iconUrl(string $iconUrl)
     {
         return $this->withMeta(['iconUrl' => $iconUrl]);
+    }
+
+    /**
+     * The size of the icon for the tooltip. In pixels or percentages.
+     *
+     * @param string  $iconSize
+     * @return $this
+     */
+    public function iconSize(string $iconSize)
+    {
+        return $this->withMeta(['iconSize' => $iconSize]);
     }
 
     /**
