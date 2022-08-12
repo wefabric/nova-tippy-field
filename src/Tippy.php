@@ -61,6 +61,14 @@ class Tippy extends Field
             'placement' => $this->placement,
         ]);
     }
+    
+    public function resolveForDisplay($resource, $attribute = null)
+    {
+        parent::resolveForDisplay($resource, $attribute);
+        if(!isset($this->meta['tipContent'])) {
+            $this->tipContent($this->value);
+        }
+    }
 
     /**
      * Allows the tootip to be added on a text.
