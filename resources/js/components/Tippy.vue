@@ -3,11 +3,11 @@
           :id="'nova-simple-tooltip' + id "
           class="nova-simple-tooltip cursor-pointer items-center flex justify-center text-90 hover:text-primary"
           ref="tooltip">
-        <span class="mr-2" v-if=" text && iconPosition === 'right'">{{ text }}</span>
+        <span class="whitespace-no-wrap" v-if="text && !iconUrl">{{ text }}</span>
+        <span class="mr-2" v-if=" text && iconUrl && iconPosition === 'right'">{{ text }}</span>
         <img v-if="iconUrl" :width="iconSize" :src="iconUrl" alt="Image description." />
         <span class="inline-flex text-70" v-if="iconPath" v-html="iconPath"></span>
-        <span class="ml-2" v-if=" text && iconPosition === 'left'">{{text}}</span>
-
+        <span class="ml-2 " v-if=" text && iconUrl && iconPosition === 'left'">{{text}}</span>
     </span>
 </template>
 
@@ -31,3 +31,4 @@ export default {
 
 }
 </script>
+
